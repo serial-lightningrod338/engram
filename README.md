@@ -12,7 +12,7 @@
 [![PyPI](https://img.shields.io/pypi/v/engram)](https://pypi.org/project/engram/)
 [![Python](https://img.shields.io/pypi/pyversions/engram)](https://pypi.org/project/engram/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![CI](https://github.com/emipanelli/engram/actions/workflows/ci.yml/badge.svg)](https://github.com/emipanelli/engram/actions)
+[![CI](https://github.com/emipanelliok/engram/actions/workflows/ci.yml/badge.svg)](https://github.com/emipanelliok/engram/actions)
 
 **Persistent memory for AI agents. They learn once, remember forever.**
 
@@ -255,7 +255,7 @@ A backup is always created before compression. Configurable thresholds in `engra
 Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ```bash
-git clone https://github.com/emipanelli/engram.git
+git clone https://github.com/emipanelliok/engram.git
 cd engram
 pip install -e ".[dev]"
 pytest
