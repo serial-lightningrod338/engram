@@ -204,15 +204,11 @@ Each project gets its own isolated knowledge base. If no local `.engram/` exists
 └── engram.toml                  # Configuration (no secrets)
 ```
 
-### Three-layer compression
+### Automatic compression
 
-Engram auto-compresses old entries so the wiki never grows unbounded:
+Engram auto-compresses when the wiki exceeds configurable thresholds (article count or total size). Articles are grouped by their primary tag and merged into a single summary per topic, using the LLM to preserve key facts while reducing volume.
 
-1. **Hot** — Recent entries, stored as individual articles
-2. **Warm** — Summarized by topic when count/size exceeds threshold
-3. **Cold** — Archived key facts, highly condensed
-
-A backup is always created before compression. Configurable thresholds in `engram.toml`.
+A backup is always created before compression. Thresholds are configurable in `engram.toml`.
 
 ## Providers
 

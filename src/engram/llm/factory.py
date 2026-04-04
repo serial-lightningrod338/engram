@@ -13,8 +13,7 @@ def create_client(config: LLMConfig) -> LLMClient:
     if config.provider == "claude":
         if not api_key:
             raise ValueError(
-                "Anthropic API key not found. Set ANTHROPIC_API_KEY environment variable "
-                "or run: engram config --provider claude --api-key <key>"
+                "Anthropic API key not found. Set the ANTHROPIC_API_KEY environment variable."
             )
         from engram.llm.claude import ClaudeClient
 
@@ -23,8 +22,7 @@ def create_client(config: LLMConfig) -> LLMClient:
     elif config.provider == "openai":
         if not api_key:
             raise ValueError(
-                "OpenAI API key not found. Set OPENAI_API_KEY environment variable "
-                "or run: engram config --provider openai --api-key <key>"
+                "OpenAI API key not found. Set the OPENAI_API_KEY environment variable."
             )
         from engram.llm.openai_ import OpenAIClient
 

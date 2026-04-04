@@ -31,7 +31,9 @@ class WikiStore:
             )
         # Double-check no path traversal
         target = (self.wiki_dir / f"{slug}.md").resolve()
-        if not str(target).startswith(str(self.wiki_dir.resolve())):
+        try:
+            target.relative_to(self.wiki_dir.resolve())
+        except ValueError:
             raise ValueError(f"Slug would escape wiki directory: {slug!r}")
 
     def list_articles(self) -> list[Article]:

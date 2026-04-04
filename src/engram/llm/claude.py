@@ -26,6 +26,8 @@ class ClaudeClient(LLMClient):
             system=system,
             messages=[{"role": "user", "content": user}],
         )
+        if not response.content:
+            raise ValueError("Anthropic API returned an empty response.")
         return LLMResponse(
             content=response.content[0].text,
             model=self.model,

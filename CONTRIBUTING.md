@@ -5,7 +5,7 @@ Thanks for your interest in contributing!
 ## Development Setup
 
 ```bash
-git clone https://github.com/emipanelli/engram.git
+git clone https://github.com/emipanelliok/engram.git
 cd engram
 pip install -e ".[dev]"
 ```

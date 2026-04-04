@@ -81,11 +81,24 @@ def extract_json(text: str) -> str:
         )
         text = text[start:]
 
-        # Find matching closing bracket
+        # Find matching closing bracket, respecting strings
         depth = 0
         opener = text[0]
         closer = "}" if opener == "{" else "]"
+        in_string = False
+        escape = False
         for i, ch in enumerate(text):
+            if escape:
+                escape = False
+                continue
+            if ch == "\\":
+                escape = True
+                continue
+            if ch == '"':
+                in_string = not in_string
+                continue
+            if in_string:
+                continue
             if ch == opener:
                 depth += 1
             elif ch == closer:

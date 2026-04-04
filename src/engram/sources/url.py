@@ -23,10 +23,13 @@ BLOCKED_NETWORKS = [
     ipaddress.ip_network("192.168.0.0/16"),    # Private
     ipaddress.ip_network("127.0.0.0/8"),       # Loopback
     ipaddress.ip_network("0.0.0.0/8"),         # Current network
+    ipaddress.ip_network("100.64.0.0/10"),     # RFC 6598 — Shared/CGNAT
     ipaddress.ip_network("::1/128"),           # IPv6 loopback
     ipaddress.ip_network("fc00::/7"),          # IPv6 private
     ipaddress.ip_network("fe80::/10"),         # IPv6 link-local
 ]
+
+MAX_REDIRECTS = 5
 
 
 def _validate_url(url: str) -> None:
@@ -57,12 +60,22 @@ def fetch_url(url: str) -> ParsedSource:
     """Fetch a URL and convert its content to markdown."""
     _validate_url(url)
 
-    response = httpx.get(
-        url,
-        follow_redirects=True,
-        timeout=30.0,
-        headers={"User-Agent": "Engram/0.1 (knowledge-base builder)"},
-    )
+    headers = {"User-Agent": "Engram/0.1 (knowledge-base builder)"}
+    response = httpx.get(url, follow_redirects=False, timeout=30.0, headers=headers)
+
+    # Manually follow redirects, re-validating each hop
+    hops = 0
+    while response.is_redirect and hops < MAX_REDIRECTS:
+        location = response.headers.get("location", "")
+        if not location:
+            break
+        _validate_url(location)
+        response = httpx.get(location, follow_redirects=False, timeout=30.0, headers=headers)
+        hops += 1
+
+    if response.is_redirect:
+        raise ValueError("Too many redirects")
+
     response.raise_for_status()
 
     content_type = response.headers.get("content-type", "")

@@ -47,9 +47,9 @@ dev = [
 engram = "engram.cli:app"
 
 [project.urls]
-Homepage = "https://github.com/emipanelli/engram"
-Repository = "https://github.com/emipanelli/engram"
-Issues = "https://github.com/emipanelli/engram/issues"
+Homepage = "https://github.com/emipanelliok/engram"
+Repository = "https://github.com/emipanelliok/engram"
+Issues = "https://github.com/emipanelliok/engram/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/engram"]

@@ -1,7 +1,8 @@
-"""Compress operation — tier memory to prevent unbounded growth."""
+"""Compress operation — merge articles by topic to prevent unbounded growth."""
 
 from __future__ import annotations
 
+import re
 import shutil
 from datetime import datetime, timezone
 from pathlib import Path
@@ -11,6 +12,14 @@ from engram.llm.base import LLMClient
 from engram.prompts import compress as prompts
 from engram.wiki.article import Article
 from engram.wiki.store import WikiStore
+
+MAX_ARTICLE_SIZE = 200_000
+
+
+def _tag_to_slug(tag: str) -> str:
+    """Convert a tag name to a safe slug."""
+    slug = re.sub(r"[^a-z0-9]+", "-", tag.lower()).strip("-")
+    return slug[:80] or "uncategorized"
 
 
 def needs_compression(wiki: WikiStore, config: CompressConfig) -> bool:
@@ -52,7 +61,7 @@ def compress_wiki(
     # Group articles by primary tag
     groups: dict[str, list[Article]] = {}
     for article in articles:
-        key = article.tags[0] if article.tags else "_uncategorized"
+        key = article.tags[0] if article.tags else "uncategorized"
         groups.setdefault(key, []).append(article)
 
     # Compress each group that has multiple articles
@@ -73,11 +82,18 @@ def compress_wiki(
             user=user_prompt,
         )
 
+        # Guard against empty or oversized LLM responses
+        compressed_content = response.content.strip()
+        if len(compressed_content) < 20:
+            continue  # skip — don't destroy data with a bad response
+        if len(compressed_content) > MAX_ARTICLE_SIZE:
+            compressed_content = compressed_content[:MAX_ARTICLE_SIZE]
+
         # Create merged article
         merged = Article(
-            slug=tag.lower().replace(" ", "-"),
+            slug=_tag_to_slug(tag),
             title=tag.title(),
-            content=response.content,
+            content=compressed_content,
             tags=[tag],
             sources=_merge_sources(group_articles),
             created_at=min(a.created_at for a in group_articles),
