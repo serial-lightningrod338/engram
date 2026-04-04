@@ -9,8 +9,8 @@
 
 # engram
 
-[![PyPI](https://img.shields.io/pypi/v/engram)](https://pypi.org/project/engram/)
-[![Python](https://img.shields.io/pypi/pyversions/engram)](https://pypi.org/project/engram/)
+[![PyPI](https://img.shields.io/pypi/v/engram-wiki)](https://pypi.org/project/engram-wiki/)
+[![Python](https://img.shields.io/pypi/pyversions/engram-wiki)](https://pypi.org/project/engram-wiki/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![CI](https://github.com/emipanelliok/engram/actions/workflows/ci.yml/badge.svg)](https://github.com/emipanelliok/engram/actions)
 
@@ -72,7 +72,7 @@ Your agent writes knowledge to a **wiki of plain markdown files**. The wiki grow
 
 ```bash
 # Install
-pip install engram
+pip install engram-wiki
 
 # Initialize — pick your LLM provider
 engram init --provider claude    # Needs ANTHROPIC_API_KEY

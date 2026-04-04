@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "engram"
+name = "engram-wiki"
 version = "0.1.0"
 description = "Persistent memory for AI agents. They learn once, remember forever."
 readme = "README.md"
